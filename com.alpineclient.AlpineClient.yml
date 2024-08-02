@@ -32,8 +32,7 @@ modules:
     buildsystem: simple
     build-commands:
       - version=$(cat VERSION)
-      - go_flags="-a -trimpath -buildmode=pie -mod=vendor -modcacherw"
-      - $GOROOT/bin/go build "${go_flags}" -ldflags="-s -w -X main.version=${version}" -o bin/alpine-client .
+      - $GOROOT/bin/go build -a -trimpath -buildmode=pie -mod=vendor -ldflags="-s -w -X main.version=${version}" -o bin/alpine-client .
       - install -D -m 755 bin/alpine-client /app/bin/alpine-client
       - install -D -m 644 $PKG/com.alpineclient.AlpineClient.desktop /app/share/applications/com.alpineclient.AlpineClient.desktop
       - install -D -m 644 $PKG/com.alpineclient.AlpineClient.png /app/share/icons/hicolor/256x256/apps/com.alpineclient.AlpineClient.png
