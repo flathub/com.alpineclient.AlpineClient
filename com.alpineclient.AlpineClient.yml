@@ -41,4 +41,4 @@ modules:
     sources:
       - type: git
         url: "https://github.com/alpine-client/pinnacle.git"
-        commit: "ea4987ad61bf876fc620bbdc1cb43ffe0959e4fa"
+        commit: "dda680bc5abbadca825458e4416a96b042dbbe27"
