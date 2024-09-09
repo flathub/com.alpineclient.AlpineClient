@@ -20,7 +20,7 @@ build-options:
     - GOBIN=/app/bin
     - GOROOT=/usr/lib/sdk/golang
     - CGO_ENABLED=0
-    - PKG=pkg/linux/flatpak
+    - PKG=ci/pkg/linux/flatpak
 modules:
   - name: xrandr
     sources:
@@ -40,4 +40,4 @@ modules:
     sources:
       - type: git
         url: "https://github.com/alpine-client/pinnacle.git"
-        commit: "1d58678907c7a2c6b9629c282e424f2add6a43a3"
+        commit: "9ca7cfb47cea8ab7be293a58ffd16e127d6a469e"
