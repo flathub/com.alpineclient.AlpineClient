@@ -13,6 +13,7 @@ finish-args:
   - "--share=network"
   - "--share=ipc"
   - "--filesystem=xdg-download:ro" # Drag & drop mods
+  - "--filesystem=home/.alpineclient:create" # Data directory
   - "--filesystem=xdg-run/app/com.spotify.Client:create" # Spotify integration
   - "--filesystem=xdg-run/app/com.discordapp.Discord:create" # Discord integration
 build-options:
