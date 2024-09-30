@@ -13,6 +13,7 @@ finish-args:
   - "--share=network"
   - "--share=ipc"
   - "--filesystem=xdg-download:ro" # Drag & drop mods
+  - "--filesystem=home/.alpineclient:create" # Data directory
   - "--filesystem=xdg-run/app/com.spotify.Client:create" # Spotify integration
   - "--filesystem=xdg-run/app/com.discordapp.Discord:create" # Discord integration
 build-options:
@@ -40,4 +41,4 @@ modules:
     sources:
       - type: git
         url: "https://github.com/alpine-client/pinnacle.git"
-        commit: "9ca7cfb47cea8ab7be293a58ffd16e127d6a469e"
+        commit: "efd9ddef6b3e8d43803dbf6b6eb43f645da5a0c6"
