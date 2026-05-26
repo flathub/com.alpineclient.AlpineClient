@@ -1,21 +1,21 @@
 id: com.alpineclient.AlpineClient
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang
 command: alpine-client
 finish-args:
-  - "--persist=.alpineclient"
-  - "--socket=x11"
-  - "--socket=pulseaudio"
-  - "--device=dri"
-  - "--share=network"
-  - "--share=ipc"
-  - "--filesystem=xdg-download:ro" # Drag & drop mods
-  - "--filesystem=home/.alpineclient:create" # Data directory
-  - "--filesystem=xdg-run/app/com.spotify.Client:create" # Spotify integration
-  - "--filesystem=xdg-run/app/com.discordapp.Discord:create" # Discord integration
+  - --persist=.alpineclient
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --share=network
+  - --share=ipc
+  - --filesystem=xdg-download:ro # Drag & drop mods
+  - --filesystem=home/.alpineclient:create # Data directory
+  - --filesystem=xdg-run/app/com.spotify.Client:create # Spotify integration
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create # Discord integration
 build-options:
   env:
     - GOBIN=/app/bin
@@ -26,8 +26,8 @@ modules:
   - name: xrandr
     sources:
       - type: archive
-        url: "https://xorg.freedesktop.org/archive/individual/app/xrandr-1.5.1.tar.xz"
-        sha256: "7bc76daf9d72f8aff885efad04ce06b90488a1a169d118dea8a2b661832e8762"
+        url: https://xorg.freedesktop.org/archive/individual/app/xrandr-1.5.1.tar.xz
+        sha256: 7bc76daf9d72f8aff885efad04ce06b90488a1a169d118dea8a2b661832e8762
 
   - name: alpineclient
     buildsystem: simple
@@ -35,11 +35,11 @@ modules:
       - version=$(cat VERSION)
       - $GOROOT/bin/go clean -cache -modcache -i -r
       - $GOROOT/bin/go build -a -trimpath -buildmode=pie -mod=vendor -ldflags="-s -w -X main.version=${version}" -o bin/alpine-client .
-      - install -D -m 755 bin/alpine-client /app/bin/alpine-client
-      - install -D -m 644 $PKG/com.alpineclient.AlpineClient.desktop /app/share/applications/com.alpineclient.AlpineClient.desktop
-      - install -D -m 644 $PKG/com.alpineclient.AlpineClient.png /app/share/icons/hicolor/256x256/apps/com.alpineclient.AlpineClient.png
-      - install -D -m 644 $PKG/com.alpineclient.AlpineClient.metainfo.xml /app/share/metainfo/com.alpineclient.AlpineClient.metainfo.xml
+      - install -Dm755 bin/alpine-client -t /app/bin/
+      - install -Dm644 $PKG/${FLATPAK_ID}.desktop -t /app/share/applications/
+      - install -Dm644 $PKG/${FLATPAK_ID}.png -t /app/share/icons/hicolor/256x256/apps/
+      - install -Dm644 $PKG/${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
     sources:
       - type: git
-        url: "https://github.com/alpine-client/pinnacle.git"
-        commit: "e2310b9a16ea0499a8b9014d538902cc9e2ad32f"
+        url: https://github.com/alpine-client/pinnacle.git
+        commit: e2310b9a16ea0499a8b9014d538902cc9e2ad32f
